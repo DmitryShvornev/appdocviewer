@@ -1,26 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <DashboardPage>
+    <SideBar></SideBar>
+    <DashboardPanel></DashboardPanel>
+  </DashboardPage>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DashboardPage from './components/DashboardPage.vue';
+import SideBar from './components/SideBar.vue';
+import DashboardPanel from './components/DashboardPanel.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    DashboardPage,
+    SideBar,
+    DashboardPanel,
   }
 }
 </script>
-
 <style>
+
+@import url('https://fonts.google.com/specimen/Montserrat');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Montserrat', system-ui;
 }
 </style>
