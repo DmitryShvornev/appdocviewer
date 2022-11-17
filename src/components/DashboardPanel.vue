@@ -1,20 +1,47 @@
 <template>
-    <div class="dashboard__panel">
-        <img class="dashboard__panel-image" src="" alt="" width="424" height="286">
-        <h2 class="dashboard__panel-title">Документ 1</h2>
-        <p class="dashboard__panel-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum.</p>
-        <button class="dashboard__panel-button download-button">Скачать</button>
-        <button class="dashboard__panel-button delete-button">Удалить</button>
+    <div class="dashboard__panel" v-if="store.selectedItem.id">
+        <img class="dashboard__panel-image" :src="store.selectedItem.image" alt="" width="424" height="286">
+        <div class="dashboard__panel-wrapper">
+            <h2 class="dashboard__panel-title">{{ store.selectedItem.name }}</h2>
+            <div class="dashboard__button-wrapper">
+                <button class="dashboard__panel-button download-button">Скачать</button>
+                <button class="dashboard__panel-button delete-button">Удалить</button>
+            </div>
+
+            <h2 class="dashboard__panel-title">Описание</h2>
+            <p class="dashboard__panel-text">{{ store.selectedItem.description }}</p>
+        </div>
+    </div>
+    <div class="dashboard__panel" v-else>
+        <p class="dashboard__panel-text">Выберите документ, чтобы посмотреть его содержиое</p>
     </div>
 </template>
-<style>
-.dashboard__panel-container {
-    border-left: 1px solid #E0E0E0;
+<script>
+import { useDocumentsStore } from '@/stores/documents';
+
+export default {
+    setup() {
+        const store = useDocumentsStore();
+        return {
+            store
+        }
+    },
 }
+</script>
+<style>
+.dashboard__panel {
+    border-left: 1px solid #E0E0E0;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 61px;
+}
+
+.dashboard__panel-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .dashboard__panel-button {
     border-radius: 8px;
@@ -22,20 +49,29 @@
     padding: 7px 28px;
     font-weight: 400;
     font-size: 14px;
+    width: 114px;
 }
 
 .dashboard__panel-title {
     font-weight: 600;
     font-size: 16px;
-    line-height: 140%;
     color: #000000;
+    margin: 0;
+    margin-bottom: 14px;
+}
+
+.dashboard__button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 17px;
+    margin-bottom: 47px;
 }
 
 .dashboard__panel-text {
     font-weight: 400;
     font-size: 14px;
-    line-height: 17px;
     color: #6C757D;
+    margin: 0;
 }
 
 .download-button {

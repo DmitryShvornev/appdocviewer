@@ -21,7 +21,6 @@ export default {
 </script>
 <style>
 
-@import url('https://fonts.google.com/specimen/Montserrat');
 #app {
   font-family: 'Montserrat', system-ui;
 }
