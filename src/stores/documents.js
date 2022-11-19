@@ -3,14 +3,14 @@ import {
 } from "pinia";
 import axios from "axios";
 
-export const useDocumentsStore = defineStore('documents', {
+export const useDocumentsStore = defineStore(process.env.VUE_APP_STORE_NAME, {
     state: () => {
         return {
             documentItems: [],
             selectedItem: {},
             loading: false,
             error: false,
-            panelText: ""
+            errorText: ""
         }
     },
 
@@ -18,7 +18,7 @@ export const useDocumentsStore = defineStore('documents', {
         async fetchDocumentItemsByParam(param) {
             if (param !== '') {
                 this.loading = true;
-                await axios.get(`/user/docs?search=${param}`).then((response) => {
+                await axios.get(process.env.VUE_APP_ROUTE + param).then((response) => {
                     this.documentItems = response.data;
                     this.loading = false;
                 }).catch((err) => {

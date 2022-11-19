@@ -9,11 +9,13 @@
             </div>
 
             <h2 class="dashboard__panel-title">Описание</h2>
-            <p class="dashboard__panel-text">{{ store.selectedItem.description }}</p>
+            <div class="dashboard__panel-text-wrapper">
+                <p class="dashboard__panel-text">{{ store.selectedItem.description }}</p>
+            </div>
         </div>
     </div>
     <div class="dashboard__panel" v-else>
-        <p class="dashboard__panel-text">Выберите документ, чтобы посмотреть его содержиое</p>
+        <p class="dashboard__panel-text--empty">Выберите документ, чтобы посмотреть его содержиое</p>
     </div>
 </template>
 <script>
@@ -30,7 +32,7 @@ export default {
 </script>
 <style>
 .dashboard__panel {
-    border-left: 1px solid #E0E0E0;
+    border-left: 1px solid var(--border-color);
     padding: 30px;
     display: flex;
     flex-direction: row;
@@ -52,10 +54,20 @@ export default {
     width: 114px;
 }
 
+.download-button:hover {
+    color: white;
+    background-color: var(--blue);
+}
+
+.delete-button:hover {
+    color: white;
+    background-color: var(--red);
+}
+
 .dashboard__panel-title {
     font-weight: 600;
     font-size: 16px;
-    color: #000000;
+    color: black;
     margin: 0;
     margin-bottom: 14px;
 }
@@ -67,20 +79,32 @@ export default {
     margin-bottom: 47px;
 }
 
+.dashboard__panel-text-wrapper {
+    overflow-y: scroll;
+    height: 320px;
+}
+
 .dashboard__panel-text {
     font-weight: 400;
     font-size: 14px;
-    color: #6C757D;
-    margin: 0;
+    color: var(--text-color);
+}
+
+.dashboard__panel-text--empty {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-top: 250px;
+    margin-left: 290px;
 }
 
 .download-button {
-    border: 1px solid #0D6EFD;
-    color: #0D6EFD;
+    border: 1px solid var(--blue);
+    color: var(--blue);
 }
 
 .delete-button {
-    border: 1px solid #DC3545;
-    color: #DC3545;
+    border: 1px solid var(--red);
+    color: var(--red);
 }
 </style>

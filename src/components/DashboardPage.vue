@@ -4,15 +4,11 @@
             <h1 class="main__title">MyApp</h1>
             <h4 class="main__username">Username</h4>
         </div>
-
         <section class="dashboard">
             <slot></slot>
         </section>
     </main>
 </template>
-<script setup>
-
-</script>
 <style>
 .main__container {
     display: flex;
@@ -37,12 +33,13 @@
 }
 
 .dashboard {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px var(--box-shadow-color);
     border-radius: 10px;
     margin-left: 50px;
     margin-right: 50px;
     height: 575px;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
 }
 </style>
