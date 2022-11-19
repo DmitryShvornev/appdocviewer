@@ -87,11 +87,6 @@ export default {
     box-shadow: 0px 0px 10px var(--box-shadow-color);
 }
 
-.list-item:hover,
-.list-item:focus {
-    background: var(--blue);
-}
-
 .active {
     background: var(--blue);
 }
@@ -123,17 +118,13 @@ export default {
     margin-top: 12px;
 }
 
-.list-item:hover .list-item__title,
-.list-item:focus .list-item__title,
-.list-item:hover .list-item__size,
-.list-item:focus .list-item__size,
+
 .active .list-item__title,
 .active .list-item__size {
     color: white;
 }
 
-.list-item:hover .list-item__image,
-.list-item:focus .list-item__image {
+.active .list-item__image {
     border-right: 1px solid var(--blue);
 }
 
